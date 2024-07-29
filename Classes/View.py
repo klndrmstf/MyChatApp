@@ -122,6 +122,7 @@ class ChatPage(QMainWindow):
         self.clientButton = loaded_ui.findChild(QPushButton, "clientbutton")
 
         self.sentButton.setEnabled(False)
+        self.clientButton.clicked.connect(self.action_connect)
         self.sentButton.clicked.connect(self.button_clicked)
         
         self.timer = QTimer(self)
