@@ -1,8 +1,6 @@
 import sys
 import socket
 
-sys.path.append("../QTCHATAPPNEW")
-
 from Libraries.tools import validate_ip
 from PySide6.QtWidgets import QMainWindow, QPushButton, QLineEdit, QTextEdit, QComboBox
 from PySide6.QtCore import QFile,   QTimer
@@ -18,7 +16,7 @@ class LoginPage(QMainWindow):
         self.client = client
         self.server = server
         
-        ent_ui_file = QFile("adress1.ui")
+        ent_ui_file = QFile("Classes/UI/adress1.ui")
         ent_ui_file.open(QFile.ReadOnly)
 
         ent_loader = QUiLoader()
@@ -106,7 +104,7 @@ class ChatPage(QMainWindow):
         
         self.setGeometry(400,200,600,600)
         
-        ui_file = QFile("myqtchatapp.ui")
+        ui_file = QFile("Classes/UI/myqtchatapp.ui")
         ui_file.open(QFile.ReadOnly)
 
         loader = QUiLoader()
