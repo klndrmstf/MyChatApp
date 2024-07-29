@@ -69,7 +69,8 @@ class LoginPage(QMainWindow):
                 connection_port=otheruserPort,
                 local_ip=userIP,
                 local_port=userPort,
-                client = self.client
+                client = self.client,
+                server = self.server
             )
             self.chatWindow.show()
             self.close()
@@ -91,7 +92,8 @@ class ChatPage(QMainWindow):
             connection_port,
             local_ip,
             local_port,
-            client
+            client,
+            server
         ):
         super().__init__()
         print("Initializing Chat Page...")
@@ -100,6 +102,7 @@ class ChatPage(QMainWindow):
         self.local_ip = local_ip
         self.local_port = local_port
         self.client = client
+        self.server = server
         
         self.setGeometry(400,200,600,600)
         
@@ -159,9 +162,9 @@ class ChatPage(QMainWindow):
 
     def Task_Chat_History_Update(self):
 
-        if server.data != "":
+        if self.server.data != "":
 
-            self.msgHistory.append(server.data)
+            self.msgHistory.append(self.server.data)
 
 
 
