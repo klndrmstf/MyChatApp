@@ -66,7 +66,7 @@ class LoginPage(QMainWindow):
 
             self.chatWindow = ChatPage(
                 connection_ip=otheruserIP,
-                connection_port=otheruserPort,
+                connection_port=int(otheruserPort),
                 local_ip=userIP,
                 local_port=userPort,
                 client = self.client,
