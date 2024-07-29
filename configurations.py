@@ -13,5 +13,6 @@ server.bind_and_listen(port=8765)
 
 client = ModuleClient()
 
-app = LoginPage(client)
+app = LoginPage(client, server)
 print("Configurations are setten.")
+

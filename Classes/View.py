@@ -7,16 +7,16 @@ from Libraries.tools import validate_ip
 from PySide6.QtWidgets import QMainWindow, QPushButton, QLineEdit, QTextEdit, QComboBox
 from PySide6.QtCore import QFile,   QTimer
 from PySide6.QtUiTools import QUiLoader
-from ..configurations import server
 
 
 
 class LoginPage(QMainWindow):
 
-    def __init__(self, client):
+    def __init__(self, client, server):
         super().__init__()
         print("Initializing Login Page...")
         self.client = client
+        self.server = server
         
         ent_ui_file = QFile("adress1.ui")
         ent_ui_file.open(QFile.ReadOnly)
