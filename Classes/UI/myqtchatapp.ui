@@ -496,7 +496,6 @@
     <pointsize>9</pointsize>
     <stylestrategy>NoAntialias</stylestrategy>
     <kerning>false</kerning>
-    <hintingpreference>PreferNoHinting</hintingpreference>
    </font>
   </property>
   <property name="windowTitle">
@@ -1489,7 +1488,6 @@
             <bold>false</bold>
             <stylestrategy>NoAntialias</stylestrategy>
             <kerning>true</kerning>
-            <hintingpreference>PreferNoHinting</hintingpreference>
            </font>
           </property>
           <property name="focusPolicy">
@@ -2012,7 +2010,6 @@
             <bold>false</bold>
             <stylestrategy>NoAntialias</stylestrategy>
             <kerning>false</kerning>
-            <hintingpreference>PreferNoHinting</hintingpreference>
            </font>
           </property>
           <property name="focusPolicy">
@@ -2550,7 +2547,6 @@
             <bold>false</bold>
             <stylestrategy>NoAntialias</stylestrategy>
             <kerning>false</kerning>
-            <hintingpreference>PreferNoHinting</hintingpreference>
            </font>
           </property>
           <property name="focusPolicy">
@@ -3597,7 +3593,6 @@
             <underline>false</underline>
             <stylestrategy>NoAntialias</stylestrategy>
             <kerning>false</kerning>
-            <hintingpreference>PreferNoHinting</hintingpreference>
            </font>
           </property>
           <property name="verticalScrollBarPolicy">
@@ -4150,7 +4145,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <bold>true</bold>
               <stylestrategy>NoAntialias</stylestrategy>
               <kerning>false</kerning>
-              <hintingpreference>PreferNoHinting</hintingpreference>
              </font>
             </property>
             <property name="cursor">
