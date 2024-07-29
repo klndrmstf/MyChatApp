@@ -5,8 +5,9 @@ sys.path.append("../QTCHATAPPNEW")
 
 from Libraries.tools import validate_ip
 from PySide6.QtWidgets import QMainWindow, QPushButton, QLineEdit, QTextEdit, QComboBox
-from PySide6.QtCore import QFile
+from PySide6.QtCore import QFile,   QTimer
 from PySide6.QtUiTools import QUiLoader
+from ..configurations import server
 
 
 
@@ -119,7 +120,14 @@ class ChatPage(QMainWindow):
 
         self.sentButton.setEnabled(False)
         self.sentButton.clicked.connect(self.button_clicked)
+        
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.Task_Chat_History_Update)
+        self.timer.start(100)
+        
+
         print("Chat Page Initialized.")
+
 
 
     def action_connect(self):
@@ -148,3 +156,15 @@ class ChatPage(QMainWindow):
 
         self.msgHistory.append(formated_msg)
         self.msgBar.clear()
+
+    def Task_Chat_History_Update(self):
+
+        if server.data != "":
+
+            self.msgHistory.append(server.data)
+
+
+
+
+
+
