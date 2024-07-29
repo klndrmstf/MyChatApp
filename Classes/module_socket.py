@@ -1,4 +1,6 @@
 import socket
+import threading
+import time
 
 
 
@@ -7,7 +9,28 @@ class ModuleSocket:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 class ModuleServer(ModuleSocket):
+    def __init__(self) -> None:
+        super().__init__()
+        self.connection = None
+        self.data = ""
+
+        self.task_connection_acept = threading.Thread(
+            target=self.task_listen_and_accept,
+            daemon=True
+        )
+        self.task_recieve_thread = threading.Thread(
+            target= self.task_recieve,
+            daemon=True
+        )
     
+    def task_listen_and_accept(self):
+        while True:
+            self.socket.listen(1)
+            self.connection, addr = self.accept()
+            print(f"Conection receiver: {addr}")
+            time.sleep(0.01)
+
+
     def bind_and_listen(self, host: str = "127.0.0.1", port:int=8765):
         # Server Bind
         print(f"Binding server to {host}:{port}")
@@ -20,17 +43,28 @@ class ModuleServer(ModuleSocket):
         connection, addr = self.socket.accept()
         return connection, addr
     
-    def send(self, connection, msg):
+    def send(self, msg):
         # Server Send
-        connection.sendall(
-            msg.encode('utf-8')
-        )
+        if self.connection is not None:
+            self.connection.sendall(
+                msg.encode('utf-8')
+            )
+        else:
+            print("No connection.")
         
     def recieve(self, connection):
         # Server Receive
         data = connection.recv(1024)
         data = data.decode()
         return data
+    
+    def task_recieve(self):
+        while True:
+            if self.connection is not None:
+                self.data = self.recieve(
+                    connection= self.connection
+                )
+            time.sleep(0.01)
     
     def send_to(self, connection, msg):
         # Server Send
