@@ -13,21 +13,27 @@ class ModuleServer(ModuleSocket):
         super().__init__()
         self.connection = None
         self.data = ""
+        self.is_binded = False
 
         self.task_connection_acept = threading.Thread(
             target=self.task_listen_and_accept,
             daemon=True
         )
+        self.task_connection_acept.start()
+        
         self.task_recieve_thread = threading.Thread(
             target= self.task_recieve,
             daemon=True
         )
+
+        self.task_recieve_thread.start()
     
     def task_listen_and_accept(self):
         while True:
-            self.socket.listen(1)
-            self.connection, addr = self.accept()
-            print(f"Conection receiver: {addr}")
+            if self.is_binded:
+                self.socket.listen(1)
+                self.connection, addr = self.accept()
+                print(f"Conection receiver: {addr}")
             time.sleep(0.01)
 
 
@@ -36,6 +42,7 @@ class ModuleServer(ModuleSocket):
         print(f"Binding server to {host}:{port}")
         self.socket.bind((host, port))
         self.socket.listen(1)
+        self.is_binded = True
         print("Listening...")
     
     def accept(self):
@@ -60,7 +67,7 @@ class ModuleServer(ModuleSocket):
     
     def task_recieve(self):
         while True:
-            if self.connection is not None:
+            if self.connection is not None and self.is_binded:
                 self.data = self.recieve(
                     connection= self.connection
                 )
