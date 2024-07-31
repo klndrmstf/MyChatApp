@@ -1,7 +1,7 @@
 import sys
 import socket
 
-from Libraries.tools import validate_ip
+from ..Libraries.tools import validate_ip
 from PySide6.QtWidgets import QMainWindow, QPushButton, QLineEdit, QTextEdit, QComboBox
 from PySide6.QtCore import QFile,   QTimer
 from PySide6.QtUiTools import QUiLoader
