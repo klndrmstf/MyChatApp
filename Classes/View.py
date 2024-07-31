@@ -16,7 +16,7 @@ class LoginPage(QMainWindow):
         self.client = client
         self.server = server
         
-        ent_ui_file = QFile("Classes/UI/adress1.ui")
+        ent_ui_file = QFile("UI/adress1.ui")
         ent_ui_file.open(QFile.ReadOnly)
 
         ent_loader = QUiLoader()
